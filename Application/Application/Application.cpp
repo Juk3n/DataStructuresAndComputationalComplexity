@@ -4,12 +4,13 @@
 #include <iostream>
 
 #include "myList.h"
+#include "myArray.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-    myList::testList();
+    myArray::testArray();
     
 }
 

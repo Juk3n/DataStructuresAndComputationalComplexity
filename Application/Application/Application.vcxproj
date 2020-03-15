@@ -150,9 +150,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="myArray.cpp" />
     <ClCompile Include="myList.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="myArray.h" />
     <ClInclude Include="myList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
