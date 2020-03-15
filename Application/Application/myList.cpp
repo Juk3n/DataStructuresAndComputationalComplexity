@@ -65,7 +65,7 @@ void myList::popBack()
 void myList::push(int value, int position)
 {
     ElementOfList* headCopy = head;
-    for (size_t i = 0; i < position - 1; i++)
+    for (size_t i = 0; i <= position - 1; i++)
         headCopy = headCopy->next;
 
     ElementOfList* movedForewardElement{ headCopy->next };
@@ -73,14 +73,20 @@ void myList::push(int value, int position)
     movedForewardElement->prev = headCopy->next;
 }
 
-void myList::pop(int position)
+void myList::pop(int value)
 {
-    ElementOfList* headCopy = head;
-    for (size_t i = 0; i < position; i++)
+    ElementOfList* headCopy = head->next;
+    while (headCopy->next != NULL) {
+        if (headCopy->data == value) {
+            headCopy->prev->next = headCopy->next;
+            headCopy->next->prev = headCopy->prev;
+            break;
+        }
         headCopy = headCopy->next;
-
-    headCopy->prev->next = headCopy->next;
-    headCopy->next->prev = headCopy->prev;
+    } 
+    if (headCopy->data == value) {
+        headCopy->prev->next = headCopy->next;
+    }
 }
 
 void myList::testList()
@@ -94,4 +100,21 @@ void myList::testList()
 
     std::cout << "Showing list..." << std::endl; 
     testList.showList();
+
+    testList.push(17, 1); std::cout << "Pushed 17 to position 1" << std::endl;
+
+    std::cout << "Showing list..." << std::endl;
+    testList.showList();
+
+    testList.pop(15); std::cout << "Popped 15 from list";
+
+    std::cout << "Showing list..." << std::endl;
+    testList.showList();
+
+    testList.pushBack(20); std::cout << "Pushed 20 to back" << std::endl;
+    testList.pushBack(1); std::cout << "Pushed 1 to back" << std::endl;
+
+    std::cout << "Showing list..." << std::endl;
+    testList.showList();
+    
 }
