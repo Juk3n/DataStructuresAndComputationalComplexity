@@ -5,6 +5,16 @@ myList::myList()
     head = new ElementOfList{ NULL, nullptr, nullptr };
 }
 
+myList::~myList()
+{
+    ElementOfList* copy = head->next;
+    while (copy == NULL) {
+        delete head;
+        head = copy;
+        copy = head->next;
+    }
+}
+
 void myList::showList()
 {
     ElementOfList* copy = head->next;

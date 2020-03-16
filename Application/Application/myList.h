@@ -1,13 +1,5 @@
 #pragma once
 
-
-/*
-    Usuwanie z listy- zostanie podana wartosc, która musi zostaæ usuniêta
-    Dodawanie do listy - zostanie podana wartosc i indeks gdzie trzeba dodac
-    Usuwanie/Dodawanie z poczatku/konca
-*/
-
-
 #include <iostream>
 
 struct ElementOfList
@@ -15,6 +7,11 @@ struct ElementOfList
 	int data;
 	ElementOfList* next;
 	ElementOfList* prev;
+
+    ~ElementOfList() {
+        delete next;
+        delete prev;
+    }
 };
 
 
@@ -24,6 +21,7 @@ class myList
 
 public:
     myList();
+    ~myList();
 
     void showList();
     

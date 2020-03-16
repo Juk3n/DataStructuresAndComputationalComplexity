@@ -9,6 +9,7 @@ class myArray
     int size;
 public:
     myArray();
+    ~myArray();
 
     void showArray();
 

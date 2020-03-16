@@ -7,6 +7,11 @@ myArray::myArray()
 	size = 0;
 }
 
+myArray::~myArray()
+{
+	delete[] pointerToArray;
+}
+
 void myArray::showArray() { 
 	for (size_t i = 0; i < size; i++) {
 		std::cout << *(pointerToArray + i) << " ";
@@ -79,16 +84,18 @@ void myArray::push(int value, int position)
 	pointerToArray = temporaryPointerToArray;
 }
 
-void myArray::pop(int value)
+void myArray::pop(int position)
 {
 	//potential problem when popping more than 1 value
 	size--;
 	temporaryPointerToArray = new int[size];
 	int changer{};
 	for (size_t i = 0; i < size; i++) {
-		if (*(pointerToArray + i + changer) == value)
+		if (position == i) 		
 			changer++;
+		
 		*(temporaryPointerToArray + i) = *(pointerToArray + i + changer);
+		
 	}
 	delete[] pointerToArray;
 	pointerToArray = temporaryPointerToArray;
@@ -111,7 +118,7 @@ void myArray::testArray()
 	std::cout << "Showing array..." << std::endl;
 	testArray.showArray();
 
-	testArray.pop(15); std::cout << "Popped 15 from list";
+	testArray.pop(2); std::cout << "Popped from position 2 from list";
 
 	std::cout << "Showing array..." << std::endl;
 	testArray.showArray();
