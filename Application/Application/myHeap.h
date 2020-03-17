@@ -10,7 +10,13 @@ class myHeap
     
     const int maxSize{ 1000 };
 
+    int getLeftChildIndex(int parentIndex);
+    int getRightChildIndex(int parentIndex);
+    int getParentIndex(int childIndex);
     void fixHeapDown(int arr[], int index, int arrayLength);
+    void fixHeapUp(int arr[], int index);
+    bool isHeap(); // zwraca czy tablica spelnia warunki kopca
+    void swapValues(int* first, int* second);
 
 public:
     myHeap();
