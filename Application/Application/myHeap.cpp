@@ -15,8 +15,24 @@ int myHeap::getParentIndex(int childIndex)
 	return static_cast<int>((childIndex - 1) / 2);
 }
 
-void myHeap::fixHeapDown(int arr[], int index, int arrayLength)
+void myHeap::fixHeapDown(int index)
 {
+	for (int i = index; i < size; i++)
+	{
+		int leftChildIndex{ getLeftChildIndex(i) };
+		int rightChildIndex{ getRightChildIndex(i) };
+		int highestValueIndex{ i };
+
+		if (leftChildIndex < size && pointerToHeap[leftChildIndex] > pointerToHeap[highestValueIndex])
+			highestValueIndex = leftChildIndex;
+
+		if (rightChildIndex < size && pointerToHeap[rightChildIndex] > pointerToHeap[highestValueIndex])
+			highestValueIndex = rightChildIndex;
+
+		if (highestValueIndex != i) {
+			swapValues(pointerToHeap + i, pointerToHeap + highestValueIndex);
+		}
+	}
 }
 
 void myHeap::fixHeapUp(int arr[], int index)
@@ -27,9 +43,14 @@ bool myHeap::isHeap()
 {
 	for (size_t i = 0; i < size; i++)
 	{
-
+		int leftChildIndex{ getLeftChildIndex(i) };
+		int rightChildIndex{ getRightChildIndex(i) };
+		if(leftChildIndex < size && pointerToHeap[i] < pointerToHeap[leftChildIndex])
+			return false;
+		if (rightChildIndex < size && pointerToHeap[i] < pointerToHeap[rightChildIndex])
+			return false;
 	}
-	return false;
+	return true;
 }
 
 void myHeap::swapValues(int* first, int* second)
@@ -37,6 +58,16 @@ void myHeap::swapValues(int* first, int* second)
 	int bufor = *first;
 	*first = *second;
 	*second = bufor;
+}
+
+int myHeap::find(int value)
+{
+	for (size_t i = 0; i < size; i++)
+	{
+		if (pointerToHeap[i] == value)
+			return i;
+	}
+	return -1;
 }
 
 myHeap::myHeap()
@@ -47,6 +78,7 @@ myHeap::myHeap()
 
 void myHeap::createHeap(int arr[], int arrayLength)
 {
+	// implenetacja podczas wczytywania z pliku
 }
 
 void myHeap::showHeap()
@@ -61,12 +93,18 @@ void myHeap::showHeap()
 		}
 	}
 	std::cout << std::endl;
+
+	for (size_t i = 0; i < size; i++) {
+		std::cout << *(pointerToHeap + i) << " ";		
+	}
+	std::cout << std::endl << std::endl;
 }
 
 void myHeap::add(int value)
 {
 	size++;
 	*(pointerToHeap + size - 1) = value;
+	//probably fix heap up in the future
 	int indexOfNewValue{ size - 1 };
 	while (indexOfNewValue > 0) {
 		int indexOfParent{ static_cast<int>((indexOfNewValue - 1) / 2) };
@@ -79,10 +117,14 @@ void myHeap::add(int value)
 	}
 }
 
-void myHeap::remove()
+void myHeap::remove(int value)
 {
-	size--;
-	swapValues(pointerToHeap, pointerToHeap + size);
+	if (isInHeap(value)) {
+		int indexOfValue{ find(value) };
+		size--;
+		swapValues(pointerToHeap + indexOfValue, pointerToHeap + size);
+		fixHeapDown(0);
+	}
 }
 
 bool myHeap::isInHeap(int value)
@@ -95,4 +137,21 @@ bool myHeap::isInHeap(int value)
 
 void myHeap::testHeap()
 {
+	myHeap testHeap{};
+	testHeap.add(5);
+	testHeap.add(7);
+	testHeap.add(6);
+	testHeap.showHeap();
+
+	testHeap.add(9);
+	testHeap.add(15);
+	testHeap.showHeap();
+
+	testHeap.add(8);
+	testHeap.add(30);
+	testHeap.showHeap();
+
+	testHeap.remove(8);
+	testHeap.remove(9);
+	testHeap.showHeap();
 }

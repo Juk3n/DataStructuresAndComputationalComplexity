@@ -13,10 +13,11 @@ class myHeap
     int getLeftChildIndex(int parentIndex);
     int getRightChildIndex(int parentIndex);
     int getParentIndex(int childIndex);
-    void fixHeapDown(int arr[], int index, int arrayLength);
+    void fixHeapDown(int index);
     void fixHeapUp(int arr[], int index);
     bool isHeap(); // zwraca czy tablica spelnia warunki kopca
     void swapValues(int* first, int* second);
+    int find(int value);
 
 public:
     myHeap();
@@ -26,7 +27,7 @@ public:
     void showHeap();
 
     void add(int value);
-    void remove();
+    void remove(int value);
 
     bool isInHeap(int value);
 

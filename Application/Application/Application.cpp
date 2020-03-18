@@ -5,13 +5,13 @@
 
 #include "myList.h"
 #include "myArray.h"
+#include "myHeap.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
 
-    myList::testList();
-    myArray::testArray();
+    myHeap::testHeap();
     
 }
 
