@@ -32,11 +32,23 @@ void myHeap::fixHeapDown(int index)
 		if (highestValueIndex != i) {
 			swapValues(pointerToHeap + i, pointerToHeap + highestValueIndex);
 		}
+
+		if (!isHeap(i))
+			fixHeapDown(i);
 	}
 }
 
-void myHeap::fixHeapUp(int arr[], int index)
+void myHeap::fixHeapUp(int index)
 {
+	while (index > 0) {
+		int indexOfParent{ static_cast<int>((index - 1) / 2) };
+		if (*(pointerToHeap + index) > * (pointerToHeap + indexOfParent)) {
+			swapValues(pointerToHeap + indexOfParent, pointerToHeap + index);
+			swapValues(&indexOfParent, &index);
+		}
+		else
+			return;
+	}
 }
 
 bool myHeap::isHeap()
@@ -46,6 +58,20 @@ bool myHeap::isHeap()
 		int leftChildIndex{ getLeftChildIndex(i) };
 		int rightChildIndex{ getRightChildIndex(i) };
 		if(leftChildIndex < size && pointerToHeap[i] < pointerToHeap[leftChildIndex])
+			return false;
+		if (rightChildIndex < size && pointerToHeap[i] < pointerToHeap[rightChildIndex])
+			return false;
+	}
+	return true;
+}
+
+bool myHeap::isHeap(int index)
+{
+	for (size_t i = 0; i < index; i++)
+	{
+		int leftChildIndex{ getLeftChildIndex(i) };
+		int rightChildIndex{ getRightChildIndex(i) };
+		if (leftChildIndex < size && pointerToHeap[i] < pointerToHeap[leftChildIndex])
 			return false;
 		if (rightChildIndex < size && pointerToHeap[i] < pointerToHeap[rightChildIndex])
 			return false;
@@ -76,7 +102,7 @@ myHeap::myHeap()
 	pointerToHeap = new int[maxSize];
 }
 
-void myHeap::createHeap(int arr[], int arrayLength)
+void myHeap::createHeap(int arrayLength)
 {
 	// implenetacja podczas wczytywania z pliku
 }
@@ -84,13 +110,29 @@ void myHeap::createHeap(int arr[], int arrayLength)
 void myHeap::showHeap()
 {
 	int jumpToNewLineIndex{};
+	
+	int maxIndexToNotChangeLines{ 1 };
+	for(; size - 1 > maxIndexToNotChangeLines; maxIndexToNotChangeLines *= 2);
+
+	int numberOfLines{};
+	for (; maxIndexToNotChangeLines >= 1; maxIndexToNotChangeLines /= 2)
+		numberOfLines++;
+
+	int distanceBeetwenNumbers{ static_cast<int>(pow(2, numberOfLines)) };
+
 	for (size_t i = 0; i < size; i++) {
+		
+		for (int j = 0; j < distanceBeetwenNumbers; j++) std::cout << " ";
 		std::cout << *(pointerToHeap + i);
-		for(int j = 0; j < jumpToNewLineIndex; j++) std::cout << " ";
+		for(int j = 0; j < distanceBeetwenNumbers; j++) std::cout << " ";
+		
+		
 		if (i == jumpToNewLineIndex) {
 			std::cout << std::endl;
 			jumpToNewLineIndex = 2 * i + 2;
+			distanceBeetwenNumbers /= 2;
 		}
+		
 	}
 	std::cout << std::endl;
 
@@ -104,17 +146,7 @@ void myHeap::add(int value)
 {
 	size++;
 	*(pointerToHeap + size - 1) = value;
-	//probably fix heap up in the future
-	int indexOfNewValue{ size - 1 };
-	while (indexOfNewValue > 0) {
-		int indexOfParent{ static_cast<int>((indexOfNewValue - 1) / 2) };
-		if (*(pointerToHeap + indexOfNewValue) > * (pointerToHeap + indexOfParent)) {
-			swapValues(pointerToHeap + indexOfParent, pointerToHeap + indexOfNewValue);
-			swapValues(&indexOfParent, &indexOfNewValue);
-		}
-		else
-			return;
-	}
+	fixHeapUp(size - 1);
 }
 
 void myHeap::remove(int value)
