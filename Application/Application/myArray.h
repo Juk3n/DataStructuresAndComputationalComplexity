@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+#include "myFile.h"
+
 class myArray
 {
 	int* pointerToArray;

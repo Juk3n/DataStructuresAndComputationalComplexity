@@ -110,11 +110,19 @@ void myArray::pop(int position)
 
 void myArray::testArray()
 {
+	myFile file{ "test1.txt" };
 	myArray testArray{};
 	std::cout << "List created" << std::endl;
 
-	testArray.pushFront(5); std::cout << "Pushed 5 to front" << std::endl;
-	testArray.pushFront(10); std::cout << "Pushed 10 to front" << std::endl;
+	int amountOfNumbersInFile{ file.readNextValue() };
+
+	for (int i = 0; i < amountOfNumbersInFile; i++) {
+		testArray.pushBack(file.readNextValue());
+	}
+
+	std::cout << "Showing array..." << std::endl;
+	testArray.showArray();
+	/*testArray.pushFront(10); std::cout << "Pushed 10 to front" << std::endl;
 	testArray.pushBack(15); std::cout << "Pushed 15 to back" << std::endl;
 
 	std::cout << "Showing array..." << std::endl;
@@ -134,5 +142,5 @@ void myArray::testArray()
 	testArray.pushBack(1); std::cout << "Pushed 1 to back" << std::endl;
 
 	std::cout << "Showing array..." << std::endl;
-	testArray.showArray();
+	testArray.showArray();*/
 }
