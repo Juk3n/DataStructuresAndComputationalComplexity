@@ -24,6 +24,18 @@ void myList::showList()
     }
 }
 
+int myList::find(int value)
+{
+    int index{ 0 };
+    ElementOfList* copy = head->next;
+    while (copy != NULL) {
+        index++;
+        if (copy->data == value) return index;
+        copy = copy->next;
+    }
+    return -1;
+}
+
 void myList::pushFront(int value)
 {
     if (head == NULL) return;

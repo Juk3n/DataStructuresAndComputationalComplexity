@@ -19,6 +19,13 @@ void myArray::showArray() {
 	std::cout << std::endl;
 }
 
+int myArray::find(int value)
+{
+	for (size_t i = 0; i < size; i++) {
+		if (*(pointerToArray + i) == value) return i;
+	}
+}
+
 void myArray::pushBack(int value)
 {
 	size++;

@@ -25,6 +25,8 @@ public:
 
     void showList();
     
+    int find(int value);
+
     void pushFront(int value);
     void popFront();
 

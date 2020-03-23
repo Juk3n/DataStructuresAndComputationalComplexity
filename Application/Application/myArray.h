@@ -12,6 +12,7 @@ public:
     ~myArray();
 
     void showArray();
+    int find(int value);
 
     void pushBack(int value);
     void popBack();
