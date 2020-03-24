@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "myFile.h"
+#include "myTimer.h"
 
 class myArray
 {

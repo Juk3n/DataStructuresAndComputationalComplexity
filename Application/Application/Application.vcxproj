@@ -154,12 +154,14 @@
     <ClCompile Include="myFile.cpp" />
     <ClCompile Include="myHeap.cpp" />
     <ClCompile Include="myList.cpp" />
+    <ClCompile Include="myTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myArray.h" />
     <ClInclude Include="myFile.h" />
     <ClInclude Include="myHeap.h" />
     <ClInclude Include="myList.h" />
+    <ClInclude Include="myTimer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

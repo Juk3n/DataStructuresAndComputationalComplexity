@@ -109,17 +109,20 @@ void myArray::pop(int position)
 }
 
 void myArray::testArray()
-{
+{	
 	myFile file{ "test1.txt" };
 	myArray testArray{};
 	std::cout << "List created" << std::endl;
 
 	int amountOfNumbersInFile{ file.readNextValue() };
-
+	myTimer timer{};
+	timer.start();
 	for (int i = 0; i < amountOfNumbersInFile; i++) {
 		testArray.pushBack(file.readNextValue());
 	}
+	timer.stop();
 
+	std::cout << timer.getTime(TimeType::MICROSECONDS) << std::endl;
 	std::cout << "Showing array..." << std::endl;
 	testArray.showArray();
 	/*testArray.pushFront(10); std::cout << "Pushed 10 to front" << std::endl;
