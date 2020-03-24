@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "myOutput.h"
+
 class myFile
 {
 	std::ifstream file;

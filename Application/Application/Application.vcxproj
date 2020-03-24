@@ -154,6 +154,8 @@
     <ClCompile Include="myFile.cpp" />
     <ClCompile Include="myHeap.cpp" />
     <ClCompile Include="myList.cpp" />
+    <ClCompile Include="myMenu.cpp" />
+    <ClCompile Include="myOutput.cpp" />
     <ClCompile Include="myTimer.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +163,8 @@
     <ClInclude Include="myFile.h" />
     <ClInclude Include="myHeap.h" />
     <ClInclude Include="myList.h" />
+    <ClInclude Include="myMenu.h" />
+    <ClInclude Include="myOutput.h" />
     <ClInclude Include="myTimer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

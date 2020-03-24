@@ -4,6 +4,7 @@
 
 #include "myFile.h"
 #include "myTimer.h"
+#include "myOutput.h"
 
 class myArray
 {

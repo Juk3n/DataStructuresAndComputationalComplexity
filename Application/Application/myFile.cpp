@@ -5,7 +5,7 @@ myFile::myFile(std::string fileName)
     file = std::ifstream{ fileName.c_str() };
     
     if (!file)
-        std::cout << "Nie udalo sie odczytac pliku" << std::endl;
+        myOutput::displayOnScreen("Nie udalo sie odczytac pliku");
 }
 
 myFile::~myFile()
