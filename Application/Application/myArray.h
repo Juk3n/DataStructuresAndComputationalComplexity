@@ -15,8 +15,10 @@ public:
     myArray();
     ~myArray();
 
+    void loadFromFile(std::string fileName);
+
     void showArray();
-    int find(int value);
+    bool find(int value); // zwraca prawde jesli element jest w tablicy
 
     void pushBack(int value);
     void popBack();
@@ -25,7 +27,7 @@ public:
     void popFront();
 
     void push(int value, int position);
-    void pop(int value);
+    void pop(int index);
 
     static void testArray();
 };

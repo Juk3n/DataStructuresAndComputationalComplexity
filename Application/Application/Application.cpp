@@ -3,15 +3,12 @@
 
 #include <iostream>
 
-#include "myList.h"
-#include "myArray.h"
-#include "myHeap.h"
+#include "myMenu.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
-
-    myArray::testArray();
-    
+    myMenu menu{};
+    menu.displayMenu();
+    return 0;
 }
 

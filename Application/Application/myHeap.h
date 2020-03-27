@@ -23,6 +23,8 @@ class myHeap
 public:
     myHeap();
 
+    void loadFromFile(std::string fileName);
+
     void createHeap(int arrayLength);
 
     void showHeap();

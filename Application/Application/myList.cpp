@@ -95,18 +95,20 @@ void myList::push(int value, int position)
     movedForewardElement->prev = headCopy->next;
 }
 
-void myList::pop(int value)
+void myList::pop(int index)
 {
     ElementOfList* headCopy = head->next;
+    int i{};
     while (headCopy->next != NULL) {
-        if (headCopy->data == value) {
+        if (index == i) {
             headCopy->prev->next = headCopy->next;
             headCopy->next->prev = headCopy->prev;
             break;
         }
         headCopy = headCopy->next;
+        i++;
     } 
-    if (headCopy->data == value) {
+    if (index == i) {
         headCopy->prev->next = headCopy->next;
     }
 }

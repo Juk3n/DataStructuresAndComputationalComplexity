@@ -19,10 +19,10 @@ void myArray::showArray() {
 	std::cout << std::endl;
 }
 
-int myArray::find(int value)
+bool myArray::find(int value)
 {
 	for (size_t i = 0; i < size; i++) {
-		if (*(pointerToArray + i) == value) return i;
+		if (*(pointerToArray + i) == value) return true;
 	}
 }
 
@@ -91,14 +91,14 @@ void myArray::push(int value, int position)
 	pointerToArray = temporaryPointerToArray;
 }
 
-void myArray::pop(int position)
+void myArray::pop(int index)
 {
 	//potential problem when popping more than 1 value
 	size--;
 	temporaryPointerToArray = new int[size];
 	int changer{};
 	for (size_t i = 0; i < size; i++) {
-		if (position == i) 		
+		if (index == i)
 			changer++;
 		
 		*(temporaryPointerToArray + i) = *(pointerToArray + i + changer);

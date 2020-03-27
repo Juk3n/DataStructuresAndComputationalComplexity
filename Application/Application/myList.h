@@ -23,6 +23,8 @@ public:
     myList();
     ~myList();
 
+    void loadFromFile(std::string fileName);
+
     void showList();
     
     int find(int value);
@@ -34,7 +36,7 @@ public:
     void popBack();
 
     void push(int value, int position);
-    void pop(int value);
+    void pop(int index);
 
     static void testList();
 };
