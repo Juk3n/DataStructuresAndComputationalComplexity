@@ -5,13 +5,14 @@
 #include <ctime> 
 
 #include "myFile.h"
+#include "myTimer.h"
 
 class myHeap
 {
     int* pointerToHeap;
     int size;
     std::mt19937 mersenne{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
-    const int maxSize{ 1000 };
+    const int maxSize{ 50000 };
 
     int getLeftChildIndex(int parentIndex);
     int getRightChildIndex(int parentIndex);
@@ -39,6 +40,6 @@ public:
 
     bool isInHeap(int value);
 
-    static void testHeap();
+    static void testHeap(int size);
 };
 

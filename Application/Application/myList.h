@@ -5,17 +5,13 @@
 #include <ctime> 
 
 #include "myFile.h"
+#include "myTimer.h"
 
 struct ElementOfList
 {
 	int data;
 	ElementOfList* next;
 	ElementOfList* prev;
-
-    ~ElementOfList() {
-        delete next;
-        delete prev;
-    }
 };
 
 
@@ -46,5 +42,5 @@ public:
     void push(int value, int position);
     void pop(int index);
 
-    static void testList();
+    static void testList(int size);
 };

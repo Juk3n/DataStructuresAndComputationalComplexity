@@ -139,42 +139,50 @@ void myArray::pop(int index)
 	pointerToArray = temporaryPointerToArray;
 }
 
-void myArray::testArray()
-{	
-	myFile file{ "test1.txt" };
-	myArray testArray{};
-	std::cout << "List created" << std::endl;
-
-	int amountOfNumbersInFile{ file.readNextValue() };
-	myTimer timer{};
+void myArray::testArray(int size)
+{
+	myArray experimental;
+	experimental.generateRandom(size);
+	myTimer timer;
 	timer.start();
-	for (int i = 0; i < amountOfNumbersInFile; i++) {
-		testArray.pushBack(file.readNextValue());
-	}
+	experimental.pushFront(10);
 	timer.stop();
+	auto actionTime{ timer.getTime(TimeType::MICROSECONDS) };
+	std::cout << "Dodanie na poczatek: " << actionTime << std::endl;
 
-	std::cout << timer.getTime(TimeType::MICROSECONDS) << std::endl;
-	std::cout << "Showing array..." << std::endl;
-	testArray.showArray();
-	/*testArray.pushFront(10); std::cout << "Pushed 10 to front" << std::endl;
-	testArray.pushBack(15); std::cout << "Pushed 15 to back" << std::endl;
+	timer.start();
+	experimental.popFront();
+	timer.stop();
+	actionTime = timer.getTime(TimeType::MICROSECONDS);
+	std::cout << "Usuniecie z poczatku: " << actionTime << std::endl;
 
-	std::cout << "Showing array..." << std::endl;
-	testArray.showArray();
+	timer.start();
+	experimental.pushBack(10);
+	timer.stop();
+	actionTime = timer.getTime(TimeType::MICROSECONDS);
+	std::cout << "Dodanie na koniec: " << actionTime << std::endl;
 
-	testArray.push(17, 1); std::cout << "Pushed 17 to position 1" << std::endl;
+	timer.start();
+	experimental.popBack();
+	timer.stop();
+	actionTime = timer.getTime(TimeType::MICROSECONDS);
+	std::cout << "Usuniecie z konca: " << actionTime << std::endl;
 
-	std::cout << "Showing array..." << std::endl;
-	testArray.showArray();
+	timer.start();
+	experimental.push(10, size/2);
+	timer.stop();
+	actionTime = timer.getTime(TimeType::MICROSECONDS);
+	std::cout << "Dodanie w jakiekolwiek miejsce(wybrano srodek): " << actionTime << std::endl;
 
-	testArray.pop(2); std::cout << "Popped from position 2 from list";
+	timer.start();
+	experimental.pop(size/2);
+	timer.stop();
+	actionTime = timer.getTime(TimeType::MICROSECONDS);
+	std::cout << "Usuniecie z jakiegokolwiek miejsca(wybrano srodek): " << actionTime << std::endl;
 
-	std::cout << "Showing array..." << std::endl;
-	testArray.showArray();
-
-	testArray.pushBack(20); std::cout << "Pushed 20 to back" << std::endl;
-	testArray.pushBack(1); std::cout << "Pushed 1 to back" << std::endl;
-
-	std::cout << "Showing array..." << std::endl;
-	testArray.showArray();*/
+	timer.start();
+	experimental.find(500);
+	timer.stop();
+	actionTime = timer.getTime(TimeType::MICROSECONDS);
+	std::cout << "Szukanie wartosci: " << actionTime << std::endl;
 }

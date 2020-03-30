@@ -36,6 +36,6 @@ public:
     void push(int value, int position);
     void pop(int index);
 
-    static void testArray();
+    static void testArray(int size);
 };
 

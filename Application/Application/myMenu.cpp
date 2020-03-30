@@ -56,8 +56,40 @@ void myMenu::menuArray()
 			userArray.showArray();
 			break;
 
-		case '7': //tutaj nasza funkcja do eksperymentow (pomiary czasow i generowanie daneych) - nie b�dzie testowana przez prowadz�cego 
-				  // mozna sobie tu dodac wlasne case'y
+		case '7': // eksperymenty
+			std::cout << "### Array size: 1000 ###" << std::endl;
+			myArray::testArray(1000);
+			std::cout << std::endl;
+
+			std::cout << "### Array size: 2000 ###" << std::endl;
+			myArray::testArray(2000);
+			std::cout << std::endl;
+
+			std::cout << "### Array size: 3000 ###" << std::endl;
+			myArray::testArray(3000);
+			std::cout << std::endl;
+
+			std::cout << "### Array size: 5000 ###" << std::endl;
+			myArray::testArray(5000);
+			std::cout << std::endl;
+
+			std::cout << "### Array size: 8000 ###" << std::endl;
+			myArray::testArray(8000);
+			std::cout << std::endl;
+
+			std::cout << "### Array size: 13000 ###" << std::endl;
+			myArray::testArray(13000);
+			std::cout << std::endl;
+
+			std::cout << "### Array size: 21000 ###" << std::endl;
+			myArray::testArray(21000);
+			std::cout << std::endl;
+
+			std::cout << "### Array size: 34000 ###" << std::endl;
+			myArray::testArray(34000);
+			std::cout << std::endl;
+			
+
 			break;
 		}
 
@@ -120,8 +152,38 @@ void myMenu::menuList()
 			userList.showList();
 			break;
 
-		case '7': //tutaj nasza funkcja do eksperymentow (pomiary czasow i generowanie daneych) - nie b�dzie testowana przez prowadz�cego 
-				  // mozna sobie tu dodac wlasne case'y
+		case '7': 
+			std::cout << "### List size: 1000 ###" << std::endl;
+			myList::testList(1000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 2000 ###" << std::endl;
+			myList::testList(2000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 3000 ###" << std::endl;
+			myList::testList(3000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 5000 ###" << std::endl;
+			myList::testList(5000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 8000 ###" << std::endl;
+			myList::testList(8000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 13000 ###" << std::endl;
+			myList::testList(13000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 21000 ###" << std::endl;
+			myList::testList(21000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 34000 ###" << std::endl;
+			myList::testList(34000);
+			std::cout << std::endl;
 			break;
 		}
 
@@ -182,8 +244,38 @@ void myMenu::menuHeap()
 			userHeap.showHeap();
 			break;
 
-		case '7': //tutaj nasza funkcja do eksperymentow (pomiary czasow i generowanie daneych) - nie b�dzie testowana przez prowadz�cego 
-				  // mozna sobie tu dodac wlasne case'y
+		case '7': 
+			std::cout << "### List size: 1000 ###" << std::endl;
+			myHeap::testHeap(1000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 2000 ###" << std::endl;
+			myHeap::testHeap(2000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 3000 ###" << std::endl;
+			myHeap::testHeap(3000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 5000 ###" << std::endl;
+			myHeap::testHeap(5000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 8000 ###" << std::endl;
+			myHeap::testHeap(8000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 13000 ###" << std::endl;
+			myHeap::testHeap(13000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 21000 ###" << std::endl;
+			myHeap::testHeap(21000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 34000 ###" << std::endl;
+			myHeap::testHeap(34000);
+			std::cout << std::endl;
 			break;
 		}
 

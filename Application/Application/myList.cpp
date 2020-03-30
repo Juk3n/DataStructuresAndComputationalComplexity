@@ -7,12 +7,7 @@ myList::myList()
 
 myList::~myList()
 {
-    ElementOfList* copy = head->next;
-    while (copy == NULL) {
-        delete head;
-        head = copy;
-        copy = head->next;
-    }
+    head = NULL;
 }
 
 void myList::loadFromFile(std::string fileName)
@@ -41,12 +36,7 @@ void myList::generateRandom(int size)
 
 void myList::clear()
 {
-    ElementOfList* copy = head->next;
-    while (copy == NULL) {
-        delete head;
-        head = copy;
-        copy = head->next;
-    }
+    head = NULL;
 }
 
 void myList::showList()
@@ -147,32 +137,50 @@ void myList::pop(int index)
     }
 }
 
-void myList::testList()
+void myList::testList(int size)
 {
-    myList testList{};
-    std::cout << "List created" << std::endl;
+    myList experimental;
+    experimental.generateRandom(size);
+    myTimer timer;
+    timer.start();
+    experimental.pushFront(10);
+    timer.stop();
+    auto actionTime{ timer.getTime(TimeType::MICROSECONDS) };
+    std::cout << "Dodanie na poczatek: " << actionTime << std::endl;
 
-    testList.pushFront(5); std::cout << "Pushed 5 to front" << std::endl;
-    testList.pushFront(10); std::cout << "Pushed 10 to front" << std::endl;
-    testList.pushBack(15); std::cout << "Pushed 15 to back" << std::endl;
+    timer.start();
+    experimental.popFront();
+    timer.stop();
+    actionTime = timer.getTime(TimeType::MICROSECONDS);
+    std::cout << "Usuniecie z poczatku: " << actionTime << std::endl;
 
-    std::cout << "Showing list..." << std::endl; 
-    testList.showList();
+    timer.start();
+    experimental.pushBack(10);
+    timer.stop();
+    actionTime = timer.getTime(TimeType::MICROSECONDS);
+    std::cout << "Dodanie na koniec: " << actionTime << std::endl;
 
-    testList.push(17, 1); std::cout << "Pushed 17 to position 1" << std::endl;
+    timer.start();
+    experimental.popBack();
+    timer.stop();
+    actionTime = timer.getTime(TimeType::MICROSECONDS);
+    std::cout << "Usuniecie z konca: " << actionTime << std::endl;
 
-    std::cout << "Showing list..." << std::endl;
-    testList.showList();
+    timer.start();
+    experimental.push(10, size / 2);
+    timer.stop();
+    actionTime = timer.getTime(TimeType::MICROSECONDS);
+    std::cout << "Dodanie w jakiekolwiek miejsce(wybrano srodek): " << actionTime << std::endl;
 
-    testList.pop(15); std::cout << "Popped 15 from list";
+    timer.start();
+    experimental.pop(size / 2);
+    timer.stop();
+    actionTime = timer.getTime(TimeType::MICROSECONDS);
+    std::cout << "Usuniecie z jakiegokolwiek miejsca(wybrano srodek): " << actionTime << std::endl;
 
-    std::cout << "Showing list..." << std::endl;
-    testList.showList();
-
-    testList.pushBack(20); std::cout << "Pushed 20 to back" << std::endl;
-    testList.pushBack(1); std::cout << "Pushed 1 to back" << std::endl;
-
-    std::cout << "Showing list..." << std::endl;
-    testList.showList();
-    
+    timer.start();
+    experimental.find(500);
+    timer.stop();
+    actionTime = timer.getTime(TimeType::MICROSECONDS);
+    std::cout << "Szukanie wartosci: " << actionTime << std::endl;
 }

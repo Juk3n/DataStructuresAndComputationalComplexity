@@ -196,23 +196,27 @@ bool myHeap::isInHeap(int value)
 	return false;
 }
 
-void myHeap::testHeap()
+void myHeap::testHeap(int size)
 {
-	myHeap testHeap{};
-	testHeap.add(5);
-	testHeap.add(7);
-	testHeap.add(6);
-	testHeap.showHeap();
+	myHeap experimental;
+	experimental.generateRandom(size);
+	myTimer timer;
 
-	testHeap.add(9);
-	testHeap.add(15);
-	testHeap.showHeap();
+	timer.start();
+	experimental.add(500);
+	timer.stop();
+	auto actionTime{ timer.getTime(TimeType::MICROSECONDS) };
+	std::cout << "Dodanie wartosci: " << actionTime << std::endl;
 
-	testHeap.add(8);
-	testHeap.add(30);
-	testHeap.showHeap();
+	timer.start();
+	experimental.remove(500);
+	timer.stop();
+	actionTime = timer.getTime(TimeType::MICROSECONDS);
+	std::cout << "Usuniecie wartosci: " << actionTime << std::endl;
 
-	testHeap.remove(8);
-	testHeap.remove(9);
-	testHeap.showHeap();
+	timer.start();
+	experimental.find(500);
+	timer.stop();
+	actionTime = timer.getTime(TimeType::MICROSECONDS);
+	std::cout << "Szukanie wartosci: " << actionTime << std::endl;
 }
