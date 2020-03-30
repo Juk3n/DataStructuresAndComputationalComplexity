@@ -15,6 +15,40 @@ myList::~myList()
     }
 }
 
+void myList::loadFromFile(std::string fileName)
+{
+    myFile file{ fileName };
+    int amountOfNumbersInFile{ file.readNextValue() };
+    this->clear();
+    head = new ElementOfList{ -1, NULL, NULL };
+
+
+    for (int i = 0; i < amountOfNumbersInFile; i++) {
+        this->pushBack(file.readNextValue());
+    }
+}
+
+void myList::generateRandom(int size)
+{
+    std::uniform_int_distribution<> die{ 1, 1000 };
+    this->clear();
+    head = new ElementOfList{ -1, NULL, NULL };
+
+    for (int i = 0; i < size; i++) {
+        this->pushBack(die(mersenne));
+    }
+}
+
+void myList::clear()
+{
+    ElementOfList* copy = head->next;
+    while (copy == NULL) {
+        delete head;
+        head = copy;
+        copy = head->next;
+    }
+}
+
 void myList::showList()
 {
     ElementOfList* copy = head->next;

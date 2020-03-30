@@ -102,9 +102,38 @@ myHeap::myHeap()
 	pointerToHeap = new int[maxSize];
 }
 
-void myHeap::createHeap(int arrayLength)
+myHeap::~myHeap()
 {
-	// implenetacja podczas wczytywania z pliku
+	delete[] pointerToHeap;
+}
+
+void myHeap::loadFromFile(std::string fileName)
+{
+	myFile file{ fileName };
+	int amountOfNumbersInFile{ file.readNextValue() };
+	this->clear();
+	
+	for (int i = 0; i < amountOfNumbersInFile; i++) {
+		this->add(file.readNextValue());
+	}
+}
+
+void myHeap::generateRandom(int size)
+{
+	std::uniform_int_distribution<> die{ 1, 1000 };
+	this->clear();
+	
+
+	for (int i = 0; i < size; i++) {
+		this->add(die(mersenne));
+	}
+}
+
+void myHeap::clear()
+{
+	delete[] pointerToHeap;
+	pointerToHeap = new int[maxSize];
+	size = 0;
 }
 
 void myHeap::showHeap()

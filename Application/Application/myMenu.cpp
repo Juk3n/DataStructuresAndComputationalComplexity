@@ -47,8 +47,8 @@ void myMenu::menuArray()
 
 		case '5':  // tutaj generowanie  tablicy
 			myOutput::displayOnScreen("Podaj ilosc elementow tablicy:");
-			std::cin >> value;
-			//myTab.generateTable(value);
+			std::cin >> index;
+			userArray.generateRandom(index);
 			userArray.showArray();
 			break;
 
@@ -111,8 +111,8 @@ void myMenu::menuList()
 
 		case '5':  // tutaj generowanie  listy
 			myOutput::displayOnScreen("Podaj ilosc elementow tablicy:");
-			std::cin >> value;
-			//myTab.generateTable(value);
+			std::cin >> index;
+			userList.generateRandom(index);
 			userList.showList();
 			break;
 
@@ -173,8 +173,8 @@ void myMenu::menuHeap()
 
 		case '5':  // tutaj generowanie  listy
 			myOutput::displayOnScreen("Podaj ilosc elementow tablicy:");
-			std::cin >> value;
-			//myTab.generateTable(value);
+			std::cin >> index;
+			userHeap.generateRandom(index);
 			userHeap.showHeap();
 			break;
 

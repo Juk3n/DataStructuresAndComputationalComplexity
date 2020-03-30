@@ -12,6 +12,36 @@ myArray::~myArray()
 	delete[] pointerToArray;
 }
 
+void myArray::loadFromFile(std::string fileName)
+{
+	myFile file{ fileName };
+	int amountOfNumbersInFile{ file.readNextValue() };
+	this->clear();
+	pointerToArray = new int[amountOfNumbersInFile];
+	
+	
+	for (int i = 0; i < amountOfNumbersInFile; i++) {
+		this->pushBack(file.readNextValue());
+	}
+}
+
+void myArray::generateRandom(int size)
+{
+	std::uniform_int_distribution<> die{ 1, 1000 };
+	this->clear();
+	pointerToArray = new int[size];
+
+	for (int i = 0; i < size; i++) {
+		this->pushBack(die(mersenne));
+	}
+
+}
+
+void myArray::clear()
+{
+	delete[] pointerToArray;
+}
+
 void myArray::showArray() { 
 	for (size_t i = 0; i < size; i++) {
 		std::cout << *(pointerToArray + i) << " ";
@@ -24,6 +54,7 @@ bool myArray::find(int value)
 	for (size_t i = 0; i < size; i++) {
 		if (*(pointerToArray + i) == value) return true;
 	}
+	return false;
 }
 
 void myArray::pushBack(int value)

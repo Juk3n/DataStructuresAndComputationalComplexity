@@ -1,13 +1,16 @@
 #pragma once
 
 #include <iostream>
+#include <random> 
+#include <ctime> 
 
+#include "myFile.h"
 
 class myHeap
 {
     int* pointerToHeap;
     int size;
-    
+    std::mt19937 mersenne{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
     const int maxSize{ 1000 };
 
     int getLeftChildIndex(int parentIndex);
@@ -22,10 +25,12 @@ class myHeap
 
 public:
     myHeap();
+    ~myHeap();
 
     void loadFromFile(std::string fileName);
+    void generateRandom(int size);
 
-    void createHeap(int arrayLength);
+    void clear();
 
     void showHeap();
 
