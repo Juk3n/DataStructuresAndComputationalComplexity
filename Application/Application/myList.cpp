@@ -1,5 +1,27 @@
 #include "myList.h"
 
+void myList::testWorking()
+{
+    myList experimental{};
+    experimental.pushFront(7);
+    experimental.showList();
+
+    experimental.pushBack(10);
+    experimental.showList();
+
+    experimental.pushFront(15);
+    experimental.showList();
+
+    experimental.push(20, 3);
+    experimental.showList();
+
+    experimental.popFront();
+    experimental.showList();
+
+    experimental.popBack();
+    experimental.showList();
+}
+
 myList::myList()
 {
     head = new ElementOfList{ NULL, nullptr, nullptr };
@@ -43,9 +65,10 @@ void myList::showList()
 {
     ElementOfList* copy = head->next;
     while (copy != NULL) {
-        std::cout << copy->data << std::endl;
+        std::cout << copy->data << " ";
         copy = copy->next;
     }
+    std::cout << std::endl;
 }
 
 int myList::find(int value)
@@ -110,13 +133,17 @@ void myList::popBack()
 
 void myList::push(int value, int position)
 {
+    if (position == 0)
+        this->pushFront(value);
+
     ElementOfList* headCopy = head;
     for (size_t i = 0; i <= position - 1; i++)
         headCopy = headCopy->next;
 
     ElementOfList* movedForewardElement{ headCopy->next };
     headCopy->next = new ElementOfList{ value, movedForewardElement, headCopy };
-    movedForewardElement->prev = headCopy->next;
+    if (movedForewardElement != NULL)
+        movedForewardElement->prev = headCopy->next;
 }
 
 void myList::pop(int index)
@@ -131,7 +158,7 @@ void myList::pop(int index)
         }
         headCopy = headCopy->next;
         i++;
-    } 
+    }
     if (index == i) {
         headCopy->prev->next = headCopy->next;
     }

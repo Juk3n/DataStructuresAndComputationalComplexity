@@ -17,11 +17,10 @@ int myHeap::getParentIndex(int childIndex)
 
 void myHeap::fixHeapDown(int index)
 {
-	for (int i = index; i < size; i++)
-	{
-		int leftChildIndex{ getLeftChildIndex(i) };
-		int rightChildIndex{ getRightChildIndex(i) };
-		int highestValueIndex{ i };
+
+		int leftChildIndex{ getLeftChildIndex(index) };
+		int rightChildIndex{ getRightChildIndex(index) };
+		int highestValueIndex{ index };
 
 		if (leftChildIndex < size && pointerToHeap[leftChildIndex] > pointerToHeap[highestValueIndex])
 			highestValueIndex = leftChildIndex;
@@ -29,13 +28,11 @@ void myHeap::fixHeapDown(int index)
 		if (rightChildIndex < size && pointerToHeap[rightChildIndex] > pointerToHeap[highestValueIndex])
 			highestValueIndex = rightChildIndex;
 
-		if (highestValueIndex != i) {
-			swapValues(pointerToHeap + i, pointerToHeap + highestValueIndex);
-		}
+		if (highestValueIndex != index) {
+			swapValues(pointerToHeap + index, pointerToHeap + highestValueIndex);
 
-		if (!isHeap(i))
-			fixHeapDown(i);
-	}
+			this->fixHeapDown(highestValueIndex);
+		}
 }
 
 void myHeap::fixHeapUp(int index)
@@ -105,6 +102,28 @@ myHeap::myHeap()
 myHeap::~myHeap()
 {
 	delete[] pointerToHeap;
+}
+
+void myHeap::testWorking()
+{
+	myHeap experimental{};
+	experimental.add(7);
+	experimental.showHeap();
+
+	experimental.add(10);
+	experimental.showHeap();
+
+	experimental.add(15);
+	experimental.showHeap();
+
+	experimental.add(20);
+	experimental.showHeap();
+
+	experimental.add(9);
+	experimental.showHeap();
+
+	experimental.remove(20);
+	experimental.showHeap();
 }
 
 void myHeap::loadFromFile(std::string fileName)
@@ -184,7 +203,7 @@ void myHeap::remove(int value)
 		int indexOfValue{ find(value) };
 		size--;
 		swapValues(pointerToHeap + indexOfValue, pointerToHeap + size);
-		fixHeapDown(0);
+		fixHeapDown(indexOfValue);
 	}
 }
 

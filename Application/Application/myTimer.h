@@ -18,4 +18,3 @@ public:
 	void stop();
 	long long getTime(TimeType type);
 };
-

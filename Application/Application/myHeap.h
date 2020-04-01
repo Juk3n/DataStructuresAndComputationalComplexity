@@ -28,6 +28,8 @@ public:
     myHeap();
     ~myHeap();
 
+    static void testWorking();
+
     void loadFromFile(std::string fileName);
     void generateRandom(int size);
 

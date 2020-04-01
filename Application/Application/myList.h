@@ -6,6 +6,7 @@
 
 #include "myFile.h"
 #include "myTimer.h"
+#include "myOutput.h"
 
 struct ElementOfList
 {
@@ -18,9 +19,14 @@ struct ElementOfList
 class myList
 {
     ElementOfList* head;
+    ElementOfList* tail;
     std::mt19937 mersenne{ static_cast<std::mt19937::result_type>(std::time(nullptr)) };
 
+    
+
 public:
+    static void testWorking();
+
     myList();
     ~myList();
 
