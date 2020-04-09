@@ -1,4 +1,5 @@
-#pragma once
+#ifndef myOutput_H
+#define myOutput_H
 
 #include <string>
 #include <iostream>
@@ -9,3 +10,4 @@ public:
 	static void displayOnScreen(std::string text);
 };
 
+#endif myOutput_H

@@ -1,11 +1,12 @@
-﻿#pragma once
+﻿#ifndef myMenu_H
+#define myMenu_H
+
 
 // Wykorzystano przkładowe menu ze strony:
 // http://jaroslaw.mierzwa.staff.iiar.pwr.edu.pl/sdizo/menu.cpp
 
-
-#include<conio.h>
-#include<string>
+#include <cstdio>
+#include <string>
 
 #include "myArray.h"
 #include "myHeap.h"
@@ -23,3 +24,5 @@ class myMenu
 public:
 	void displayMenu();
 };
+
+#endif myMenu_H

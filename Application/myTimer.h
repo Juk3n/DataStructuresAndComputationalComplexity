@@ -1,4 +1,5 @@
-#pragma once
+#ifndef myTimer_H
+#define myTimer_H
 
 #include <chrono>
 
@@ -18,3 +19,5 @@ public:
 	void stop();
 	long long getTime(TimeType type);
 };
+
+#endif myTimer_H

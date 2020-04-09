@@ -10,7 +10,7 @@ void myMenu::menuArray()
 
 	do {
 		displayStructureMenu("--- TABLICA ---");
-		opt = _getche();
+		opt = getchar();
 		std::cout << std::endl;
 		switch (opt) {
 		case '1': //tutaj wczytytwanie  tablicy z pliku
@@ -106,7 +106,7 @@ void myMenu::menuList()
 
 	do {
 		displayStructureMenu("--- LISTA ---");
-		opt = _getche();
+		opt = getchar();
 		std::cout << std::endl;
 		switch (opt) {
 		case '1': //tutaj wczytytwanie listy z pliku
@@ -200,7 +200,7 @@ void myMenu::menuHeap()
 
 	do {
 		displayStructureMenu("--- LISTA ---");
-		opt = _getche();
+		opt = getchar();
 		std::cout << std::endl;
 		switch (opt) {
 		case '1': //tutaj wczytytwanie listy z pliku
@@ -308,7 +308,7 @@ void myMenu::displayMenu()
 		std::cout << "3.Kopiec" << std::endl;
 		std::cout << "0.Wyjscie" << std::endl;
 		std::cout << "Podaj opcje:";
-		option = _getche();
+		option = getchar();
 		std::cout << std::endl;
 
 		switch (option) {

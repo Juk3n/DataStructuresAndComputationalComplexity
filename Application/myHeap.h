@@ -1,4 +1,5 @@
-#pragma once
+#ifndef myHeap_H
+#define myHeap_H
 
 #include <iostream>
 #include <random> 
@@ -43,3 +44,4 @@ public:
     static void testHeap(int size);
 };
 
+#endif myHeap_H

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef myFile_H
+#define myFile_H
 
 #include <string>
 #include <fstream>
@@ -16,3 +17,4 @@ public:
 	static void generateRandomValuesInFile(std::string fileName, int numberOfValues);
 };
 
+#endif myFile_H

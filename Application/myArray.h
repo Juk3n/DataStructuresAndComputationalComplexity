@@ -1,4 +1,5 @@
-#pragma once
+#ifndef myArray_H
+#define myArray_H
 
 #include <iostream>
 #include <random> // for std::mt19937
@@ -41,3 +42,4 @@ public:
     static void testArray(int size);
 };
 
+#endif myArray_H

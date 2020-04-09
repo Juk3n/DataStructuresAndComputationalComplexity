@@ -1,4 +1,5 @@
-#pragma once
+#ifndef myList_H
+#define myList_H
 
 #include <iostream>
 #include <random> 
@@ -48,3 +49,5 @@ public:
 
     static void testList(int size);
 };
+
+#endif myList_H

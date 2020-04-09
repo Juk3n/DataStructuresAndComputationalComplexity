@@ -1,4 +1,5 @@
-#pragma once
+#ifndef StructureTest_H
+#define StructureTest_H
 
 #include "myArray.h"
 #include "myHeap.h"
@@ -20,4 +21,4 @@ public:
 	static void testMyHeap();
 };
 
-
+#endif StructureTest_H
