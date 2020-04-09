@@ -25,8 +25,6 @@ class myList
     
 
 public:
-    static void testWorking();
-
     myList();
     ~myList();
 

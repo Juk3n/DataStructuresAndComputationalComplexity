@@ -12,6 +12,11 @@ myArray::~myArray()
 	delete[] pointerToArray;
 }
 
+int myArray::getSize()
+{
+	return size;
+}
+
 void myArray::loadFromFile(std::string fileName)
 {
 	myFile file{ fileName };
@@ -40,6 +45,8 @@ void myArray::generateRandom(int size)
 void myArray::clear()
 {
 	delete[] pointerToArray;
+	pointerToArray = new int[0];
+	size = 0;
 }
 
 void myArray::showArray() { 

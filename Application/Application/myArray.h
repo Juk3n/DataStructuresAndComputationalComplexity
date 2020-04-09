@@ -19,6 +19,8 @@ public:
     myArray();
     ~myArray();
 
+    int getSize();
+
     void loadFromFile(std::string fileName);
     void generateRandom(int size);
 

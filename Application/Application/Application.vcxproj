@@ -157,6 +157,7 @@
     <ClCompile Include="myMenu.cpp" />
     <ClCompile Include="myOutput.cpp" />
     <ClCompile Include="myTimer.cpp" />
+    <ClCompile Include="StructureTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myArray.h" />
@@ -166,6 +167,7 @@
     <ClInclude Include="myMenu.h" />
     <ClInclude Include="myOutput.h" />
     <ClInclude Include="myTimer.h" />
+    <ClInclude Include="StructureTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

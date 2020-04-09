@@ -4,11 +4,13 @@
 #include <iostream>
 
 #include "myMenu.h"
+#include "StructureTest.h"
 
 int main()
 {
-    myMenu menu{};
-    menu.displayMenu();
+    StructureTest::runAllTests();
+    //myMenu menu{};
+    //menu.displayMenu();
     return 0;
 }
 

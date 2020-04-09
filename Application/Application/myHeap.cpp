@@ -104,28 +104,6 @@ myHeap::~myHeap()
 	delete[] pointerToHeap;
 }
 
-void myHeap::testWorking()
-{
-	myHeap experimental{};
-	experimental.add(7);
-	experimental.showHeap();
-
-	experimental.add(10);
-	experimental.showHeap();
-
-	experimental.add(15);
-	experimental.showHeap();
-
-	experimental.add(20);
-	experimental.showHeap();
-
-	experimental.add(9);
-	experimental.showHeap();
-
-	experimental.remove(20);
-	experimental.showHeap();
-}
-
 void myHeap::loadFromFile(std::string fileName)
 {
 	myFile file{ fileName };

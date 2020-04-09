@@ -1,27 +1,5 @@
 #include "myList.h"
 
-void myList::testWorking()
-{
-    myList experimental{};
-    experimental.pushFront(7);
-    experimental.showList();
-
-    experimental.pushBack(10);
-    experimental.showList();
-
-    experimental.pushFront(15);
-    experimental.showList();
-
-    experimental.push(20, 3);
-    experimental.showList();
-
-    experimental.popFront();
-    experimental.showList();
-
-    experimental.popBack();
-    experimental.showList();
-}
-
 myList::myList()
 {
     head = new ElementOfList{ NULL, nullptr, nullptr };
