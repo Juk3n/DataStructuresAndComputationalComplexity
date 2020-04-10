@@ -45,7 +45,7 @@ void myArray::generateRandom(int size)
 void myArray::clear()
 {
 	delete[] pointerToArray;
-	pointerToArray = new int[0];
+	pointerToArray = NULL;
 	size = 0;
 }
 

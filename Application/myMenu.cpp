@@ -1,5 +1,40 @@
 ﻿#include "myMenu.h"
 
+
+void myMenu::menuProject1() {
+	char option;
+	do {
+		std::cout << std::endl;
+		std::cout << "==== MENU GLOWNE ===" << std::endl;
+		std::cout << "1.Tablica" << std::endl;
+		std::cout << "2.Lista" << std::endl;
+		std::cout << "3.Kopiec" << std::endl;
+		std::cout << "0.Wyjscie" << std::endl;
+		std::cout << "Podaj opcje:";
+		option = getchar();
+		std::cout << std::endl;
+
+		switch (option) {
+		case '1':
+			menuArray();
+			break;
+
+		case '2':
+			menuList();
+			break;
+
+		case '3':
+			menuHeap();
+			break;
+		}
+
+	} while (option != '0');
+}
+
+void myMenu::menuProject2() {
+	
+}
+
 void myMenu::menuArray()
 {
 	myArray userArray;
@@ -299,32 +334,26 @@ void myMenu::displayStructureMenu(std::string info)
 
 void myMenu::displayMenu()
 {
-	char option;
+	char option1;
 	do {
 		std::cout << std::endl;
 		std::cout << "==== MENU GLOWNE ===" << std::endl;
-		std::cout << "1.Tablica" << std::endl;
-		std::cout << "2.Lista" << std::endl;
-		std::cout << "3.Kopiec" << std::endl;
+		std::cout << "1.Projekt 1" << std::endl;
+		std::cout << "2.Projekt 2" << std::endl;
 		std::cout << "0.Wyjscie" << std::endl;
 		std::cout << "Podaj opcje:";
-		option = getchar();
+		option1 = getchar();
 		std::cout << std::endl;
 
-		switch (option) {
+		switch (option1) {
 		case '1':
-			menuArray();
+			menuProject1();
 			break;
 
 		case '2':
-			menuList();
-			break;
-
-		case '3':
-			menuHeap();
+			menuProject2();
 			break;
 		}
 
-	} while (option != '0');
-
+	} while (option1 != '0');
 }
