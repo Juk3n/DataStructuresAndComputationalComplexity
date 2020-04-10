@@ -1,12 +1,8 @@
 #include "StructureTest.h"
 
-
-
 void StructureTest::runAllTests()
 {
-    testMyArray();
-    testMyList();
-    testMyHeap();
+
 }
 
 void StructureTest::testMyArray()
