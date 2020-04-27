@@ -22,7 +22,12 @@ class myMenu
 	void menuArray();
 	void menuList();
 	void menuHeap();
-	void displayStructureMenu(std::string info);
+
+	void menuSpanningTree();
+	void menuGraph();
+
+	void displayStructureMenu1(std::string info);
+	void displayStructureMenu2(std::string info);
 public:
 	void displayMenu();
 };

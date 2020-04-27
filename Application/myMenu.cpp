@@ -32,19 +32,40 @@ void myMenu::menuProject1() {
 }
 
 void myMenu::menuProject2() {
-	
+	char option;
+	do {
+		std::cout << std::endl;
+		std::cout << "==== MENU GLOWNE ===" << std::endl;
+		std::cout << "1.Drzewo spinajace" << std::endl;
+		std::cout << "2.Graf" << std::endl;
+		std::cout << "0.Wyjscie" << std::endl;
+		std::cout << "Podaj opcje:";
+		option = getchar();
+		std::cout << std::endl;
+
+		switch (option) {
+		case '1':
+			menuSpanningTree();
+			break;
+
+		case '2':
+			menuGraph();
+			break;
+		}
+
+	} while (option != '0');
 }
 
 void myMenu::menuArray()
 {
-	myArray userArray;
+	myArray<int> userArray{};
 
 	char opt;
 	std::string fileName;
 	int index, value;
 
 	do {
-		displayStructureMenu("--- TABLICA ---");
+		displayStructureMenu1("--- TABLICA ---");
 		opt = getchar();
 		std::cout << std::endl;
 		switch (opt) {
@@ -93,37 +114,36 @@ void myMenu::menuArray()
 
 		case '7': // eksperymenty
 			std::cout << "### Array size: 1000 ###" << std::endl;
-			myArray::testArray(1000);
+			userArray.testArray(1000);
 			std::cout << std::endl;
 
 			std::cout << "### Array size: 2000 ###" << std::endl;
-			myArray::testArray(2000);
+			userArray.testArray(2000);
 			std::cout << std::endl;
 
 			std::cout << "### Array size: 3000 ###" << std::endl;
-			myArray::testArray(3000);
+			userArray.testArray(3000);
 			std::cout << std::endl;
 
 			std::cout << "### Array size: 5000 ###" << std::endl;
-			myArray::testArray(5000);
+			userArray.testArray(5000);
 			std::cout << std::endl;
 
 			std::cout << "### Array size: 8000 ###" << std::endl;
-			myArray::testArray(8000);
+			userArray.testArray(8000);
 			std::cout << std::endl;
 
 			std::cout << "### Array size: 13000 ###" << std::endl;
-			myArray::testArray(13000);
+			userArray.testArray(13000);
 			std::cout << std::endl;
 
 			std::cout << "### Array size: 21000 ###" << std::endl;
-			myArray::testArray(21000);
+			userArray.testArray(21000);
 			std::cout << std::endl;
 
 			std::cout << "### Array size: 34000 ###" << std::endl;
-			myArray::testArray(34000);
-			std::cout << std::endl;
-			
+			userArray.testArray(34000);
+			std::cout << std::endl;	
 
 			break;
 		}
@@ -133,14 +153,14 @@ void myMenu::menuArray()
 
 void myMenu::menuList()
 {
-	myList userList;
+	myList<int> userList;
 
 	char opt;
 	std::string fileName;
 	int index, value;
 
 	do {
-		displayStructureMenu("--- LISTA ---");
+		displayStructureMenu1("--- LISTA ---");
 		opt = getchar();
 		std::cout << std::endl;
 		switch (opt) {
@@ -188,37 +208,37 @@ void myMenu::menuList()
 			break;
 
 		case '7': 
-			std::cout << "### List size: 1000 ###" << std::endl;
-			myList::testList(1000);
-			std::cout << std::endl;
+			// std::cout << "### List size: 1000 ###" << std::endl;
+			// myList::testList(1000);
+			// std::cout << std::endl;
 
-			std::cout << "### List size: 2000 ###" << std::endl;
-			myList::testList(2000);
-			std::cout << std::endl;
+			// std::cout << "### List size: 2000 ###" << std::endl;
+			// myList::testList(2000);
+			// std::cout << std::endl;
 
-			std::cout << "### List size: 3000 ###" << std::endl;
-			myList::testList(3000);
-			std::cout << std::endl;
+			// std::cout << "### List size: 3000 ###" << std::endl;
+			// myList::testList(3000);
+			// std::cout << std::endl;
 
-			std::cout << "### List size: 5000 ###" << std::endl;
-			myList::testList(5000);
-			std::cout << std::endl;
+			// std::cout << "### List size: 5000 ###" << std::endl;
+			// myList::testList(5000);
+			// std::cout << std::endl;
 
-			std::cout << "### List size: 8000 ###" << std::endl;
-			myList::testList(8000);
-			std::cout << std::endl;
+			// std::cout << "### List size: 8000 ###" << std::endl;
+			// myList::testList(8000);
+			// std::cout << std::endl;
 
-			std::cout << "### List size: 13000 ###" << std::endl;
-			myList::testList(13000);
-			std::cout << std::endl;
+			// std::cout << "### List size: 13000 ###" << std::endl;
+			// myList::testList(13000);
+			// std::cout << std::endl;
 
-			std::cout << "### List size: 21000 ###" << std::endl;
-			myList::testList(21000);
-			std::cout << std::endl;
+			// std::cout << "### List size: 21000 ###" << std::endl;
+			// myList::testList(21000);
+			// std::cout << std::endl;
 
-			std::cout << "### List size: 34000 ###" << std::endl;
-			myList::testList(34000);
-			std::cout << std::endl;
+			// std::cout << "### List size: 34000 ###" << std::endl;
+			// myList::testList(34000);
+			// std::cout << std::endl;
 			break;
 		}
 
@@ -234,7 +254,7 @@ void myMenu::menuHeap()
 	int index, value;
 
 	do {
-		displayStructureMenu("--- LISTA ---");
+		displayStructureMenu1("--- LISTA ---");
 		opt = getchar();
 		std::cout << std::endl;
 		switch (opt) {
@@ -317,8 +337,102 @@ void myMenu::menuHeap()
 	} while (opt != '0');
 }
 
-void myMenu::displayStructureMenu(std::string info)
-{
+void myMenu::menuSpanningTree() {
+	myHeap userHeap;
+
+	char opt;
+	std::string fileName;
+	int index, value;
+
+	do {
+		displayStructureMenu1("--- LISTA ---");
+		opt = getchar();
+		std::cout << std::endl;
+		switch (opt) {
+		case '1': //tutaj wczytytwanie listy z pliku
+			myOutput::displayOnScreen(" Podaj nazwe zbioru:");
+			std::cin >> fileName;
+			userHeap.loadFromFile(fileName);
+			userHeap.showHeap();
+			break;
+
+		case '2': //tutaj usuwanie elementu z listy
+			myOutput::displayOnScreen(" podaj wartosc:");
+			std::cin >> value;
+			userHeap.remove(value);
+			userHeap.showHeap();
+			break;
+
+		case '3': //tutaj dodawanie elemetu do listy
+			myOutput::displayOnScreen(" podaj waertosc:");
+			std::cin >> value;
+			userHeap.add(value);
+			userHeap.showHeap();
+			break;
+
+		case '4': //tutaj znajdowanie elemetu w liscie
+			myOutput::displayOnScreen(" podaj wartosc:");
+			std::cin >> value;
+			if (userHeap.isInHeap(value))
+				myOutput::displayOnScreen("poadana wartosc jest w tablicy");
+			else
+				myOutput::displayOnScreen("poadanej wartosci NIE ma w tablicy");
+			break;
+
+		case '5':  // tutaj generowanie  listy
+			myOutput::displayOnScreen("Podaj ilosc elementow tablicy:");
+			std::cin >> index;
+			userHeap.generateRandom(index);
+			userHeap.showHeap();
+			break;
+
+		case '6':  //tutaj wyswietlanie listy
+			userHeap.showHeap();
+			break;
+
+		case '7': 
+			std::cout << "### List size: 1000 ###" << std::endl;
+			myHeap::testHeap(1000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 2000 ###" << std::endl;
+			myHeap::testHeap(2000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 3000 ###" << std::endl;
+			myHeap::testHeap(3000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 5000 ###" << std::endl;
+			myHeap::testHeap(5000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 8000 ###" << std::endl;
+			myHeap::testHeap(8000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 13000 ###" << std::endl;
+			myHeap::testHeap(13000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 21000 ###" << std::endl;
+			myHeap::testHeap(21000);
+			std::cout << std::endl;
+
+			std::cout << "### List size: 34000 ###" << std::endl;
+			myHeap::testHeap(34000);
+			std::cout << std::endl;
+			break;
+		}
+
+	} while (opt != '0');
+}
+
+void myMenu::menuGraph() {
+
+}
+
+void myMenu::displayStructureMenu1(std::string info) {
 	myOutput::displayOnScreen("");
 	myOutput::displayOnScreen(info);
 	myOutput::displayOnScreen("1.Wczytaj z pliku");
@@ -332,16 +446,29 @@ void myMenu::displayStructureMenu(std::string info)
 	myOutput::displayOnScreen("Podaj opcje:");
 }
 
+void myMenu::displayStructureMenu2(std::string info) {
+	myOutput::displayOnScreen("");
+	myOutput::displayOnScreen(info);
+	myOutput::displayOnScreen("1.Wczytaj z pliku");
+	myOutput::displayOnScreen("2.Wygeneruj losowo");
+	myOutput::displayOnScreen("3.Wyswietl listowo i macierzowo");
+	myOutput::displayOnScreen("4.Algorytm 1");
+	myOutput::displayOnScreen("5.Algorytm 2");
+	myOutput::displayOnScreen("6.Test (pomiary)");
+	myOutput::displayOnScreen("0.Powrot do menu");
+	myOutput::displayOnScreen("Podaj opcje:");
+}
+
 void myMenu::displayMenu()
 {
 	char option1;
 	do {
-		std::cout << std::endl;
-		std::cout << "==== MENU GLOWNE ===" << std::endl;
-		std::cout << "1.Projekt 1" << std::endl;
-		std::cout << "2.Projekt 2" << std::endl;
-		std::cout << "0.Wyjscie" << std::endl;
-		std::cout << "Podaj opcje:";
+		myOutput::displayOnScreen("");
+		myOutput::displayOnScreen("==== MENU GLOWNE ===");
+		myOutput::displayOnScreen("1.Projekt 1");
+		myOutput::displayOnScreen("2.Projekt 2");
+		myOutput::displayOnScreen("0.Wyjscie");
+		myOutput::displayOnScreen("Podaj opcje:");
 		option1 = getchar();
 		std::cout << std::endl;
 
